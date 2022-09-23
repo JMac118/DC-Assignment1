@@ -4,17 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Authenticator;
 
 namespace Service_Provider.Controllers
 {
     [RoutePrefix("api/calculator")]
     public class CalculatorController : ApiController
     {
-        [Route("ADDTwoNumbers/{firstNumber}/{secondNumber}")]
+        [Route("{token}/ADDTwoNumbers/{firstNumber}/{secondNumber}")]
         [Route("ADDTwoNumbers")]
         [HttpGet]
-        public int ADDTwoNumbers(int firstNumber, int secondNumber)
+        public int ADDTwoNumbers(int token, int firstNumber, int secondNumber)
         {
+            //if(validate(token)
             return firstNumber + secondNumber;
         }
 
