@@ -51,12 +51,11 @@ namespace Authenticator
         public string Register(string name, string password)
         {
             string fNameFile = folder + "/Data/registered_users.txt";
-            string input = "\n" + name + ":" + password;
+            string input = name + ":" + password;
             string output = "";
             try
             {
                 File.AppendAllText(fNameFile, input);
-                //File.AppendAllText(fNameFile, input);
                 output = "sucessfully registered";
             }
             catch(Exception)
@@ -110,6 +109,10 @@ namespace Authenticator
             return token;
         }
 
+        /*
+         * Calculates milliseconds from input minute variable, sets Threading Timer to 
+         * repeat call the token cleanup.
+         */
         internal void SetTokenCleanupPeriod(int minutes)
         {
             int mseconds = (minutes * 60000);
