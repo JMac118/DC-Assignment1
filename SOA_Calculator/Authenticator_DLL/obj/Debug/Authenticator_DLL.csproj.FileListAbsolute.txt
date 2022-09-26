@@ -1,0 +1,6 @@
+F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator_DLL\bin\Debug\Authenticator_DLL.dll
+F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator_DLL\bin\Debug\Authenticator_DLL.pdb
+F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator_DLL\obj\Debug\Authenticator_DLL.csproj.AssemblyReference.cache
+F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator_DLL\obj\Debug\Authenticator_DLL.csproj.CoreCompileInputs.cache
+F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator_DLL\obj\Debug\Authenticator_DLL.dll
+F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator_DLL\obj\Debug\Authenticator_DLL.pdb

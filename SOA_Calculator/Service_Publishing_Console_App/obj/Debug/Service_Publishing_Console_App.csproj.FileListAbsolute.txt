@@ -1,0 +1,8 @@
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\bin\Debug\Service_Publishing_Console_App.exe.config
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\bin\Debug\Service_Publishing_Console_App.exe
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\bin\Debug\Service_Publishing_Console_App.pdb
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\obj\Debug\Service_Publishing_Console_App.csproj.AssemblyReference.cache
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\obj\Debug\Service_Publishing_Console_App.csproj.SuggestedBindingRedirects.cache
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\obj\Debug\Service_Publishing_Console_App.csproj.CoreCompileInputs.cache
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\obj\Debug\Service_Publishing_Console_App.exe
+F:\Uni\DC-Assignment1\SOA_Calculator\Service_Publishing_Console_App\obj\Debug\Service_Publishing_Console_App.pdb
