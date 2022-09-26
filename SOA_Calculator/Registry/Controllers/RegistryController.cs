@@ -14,11 +14,14 @@ using System.ServiceModel;
 
 namespace Registry.Controllers
 {
+    [RoutePrefix("api/registry")]
     public class RegistryController : ApiController
     {
         static string folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+        [Route("/Publish/{token:int}")]
         [HttpPost]
-        public IHttpActionResult Publish(int token, ServiceDescription serviceDescription)
+        public IHttpActionResult Publish(int token, [FromBody] ServiceDescription serviceDescription)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
 
@@ -61,6 +64,8 @@ namespace Registry.Controllers
             return Ok(outcome);
         }
 
+        [Route("/Search/{token:int}/{searchTerm:alpha}")]
+        [HttpPost]
         public IHttpActionResult Search(int token, string searchTerm)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
@@ -103,6 +108,8 @@ namespace Registry.Controllers
             return Ok(output);
         }
 
+        [Route("/AllServices/{token:int}")]
+        [HttpPost]
         public IHttpActionResult AllServices(int token)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
@@ -120,7 +127,9 @@ namespace Registry.Controllers
             return Ok(output);
         }
 
-        public IHttpActionResult Unpublish(int token, string service_endpoint)
+        [Route("/Unpublish/{token:int}/{serviceEndpoint:alpha}")]
+        [HttpPost]
+        public IHttpActionResult Unpublish(int token, string serviceEndpoint)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
 
@@ -139,7 +148,7 @@ namespace Registry.Controllers
 
             foreach (ServiceDescription serviceDescription in serviceDescriptions)
             {
-                if(serviceDescription.API_Endpoint.Equals(service_endpoint))
+                if(serviceDescription.API_Endpoint.Equals(serviceEndpoint))
                 {
                     serviceDescriptions.Remove(serviceDescription);
                     break;
