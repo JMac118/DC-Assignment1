@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Registry_DLL;
 using Authenticator_DLL;
 using System.ServiceModel;
+using System.Web.Http.Description;
 
 namespace Registry.Controllers
 {
@@ -21,6 +22,7 @@ namespace Registry.Controllers
 
         [Route("/Publish/{token:int}")]
         [HttpPost]
+        [ResponseType(typeof(ServiceCallOutcome))]
         public IHttpActionResult Publish(int token, [FromBody] ServiceDescription serviceDescription)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
@@ -66,6 +68,7 @@ namespace Registry.Controllers
 
         [Route("/Search/{token:int}/{searchTerm:alpha}")]
         [HttpPost]
+        [ResponseType(typeof(List<ServiceCallOutcome>))]
         public IHttpActionResult Search(int token, string searchTerm)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
@@ -129,6 +132,7 @@ namespace Registry.Controllers
 
         [Route("/Unpublish/{token:int}/{serviceEndpoint:alpha}")]
         [HttpPost]
+        [ResponseType(typeof(ServiceCallOutcome))]
         public IHttpActionResult Unpublish(int token, string serviceEndpoint)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
