@@ -23,7 +23,7 @@ namespace Client
     public partial class Login : Window
     {
         Authenticator_Interface authenticator;
-        int token;
+        internal int token;
 
         public Login()
         {
@@ -61,7 +61,16 @@ namespace Client
                 else
                 {
                     PasswordErrorText.Text = "";
-                    token = authenticator.Login(EmailErrorText.Text, PasswordTextBox.Text);
+                    try
+                    {
+                        token = authenticator.Login(EmailErrorText.Text, PasswordTextBox.Text);
+
+                    }
+                    catch(FaultException<InvalidUserFault> ex)
+                    {
+                        StatusLabel.Foreground = Brushes.Red;
+                        StatusLabel.Content = ex.Message;
+                    }
                 }
             }
         }
