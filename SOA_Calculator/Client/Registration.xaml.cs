@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Authenticator_DLL;
 
 namespace Client
 {
@@ -20,9 +22,18 @@ namespace Client
     /// </summary>
     public partial class Registration : Window
     {
+        Authenticator_Interface authenticator;
+        int token;
+
         public Registration()
         {
             InitializeComponent();
+            ChannelFactory<Authenticator_Interface> authFactory; 
+            NetTcpBinding tcp = new NetTcpBinding();
+
+            string URL = "net.tcp://localhost/AuthenticationService";
+            authFactory = new ChannelFactory<Authenticator_Interface>(tcp, URL);
+            authenticator = authFactory.CreateChannel();
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -50,8 +61,17 @@ namespace Client
                 else
                 {
                     PasswordErrorText.Text = "";
+                    String regStatus = authenticator.Register(EmailErrorText.Text, PasswordTextBox.Text);
 
-                    //TODO: send credentials to Authentication Service
+                    if(regStatus.Equals("failed to register"))
+                    {
+                        StatusLabel.Foreground = Brushes.Red;
+                    }
+                    else
+                    {
+                        StatusLabel.Foreground = Brushes.Green;
+                    }
+                    StatusLabel.Content = regStatus.ToUpper();
                 }
             }
         }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Authenticator_DLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -20,9 +22,18 @@ namespace Client
     /// </summary>
     public partial class Login : Window
     {
+        Authenticator_Interface authenticator;
+        int token;
+
         public Login()
         {
             InitializeComponent();
+            ChannelFactory<Authenticator_Interface> authFactory;
+            NetTcpBinding tcp = new NetTcpBinding();
+
+            string URL = "net.tcp://localhost/AuthenticationService";
+            authFactory = new ChannelFactory<Authenticator_Interface>(tcp, URL);
+            authenticator = authFactory.CreateChannel();
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -50,8 +61,7 @@ namespace Client
                 else
                 {
                     PasswordErrorText.Text = "";
-
-                    //TODO: send credentials to Authentication Service
+                    token = authenticator.Login(EmailErrorText.Text, PasswordTextBox.Text);
                 }
             }
         }
