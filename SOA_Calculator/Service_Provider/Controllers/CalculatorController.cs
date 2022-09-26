@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.ServiceModel;
 using System.Web.Http;
-using Authenticator;
+using Authenticator_DLL;
 
 namespace Service_Provider.Controllers
 {
@@ -16,32 +17,84 @@ namespace Service_Provider.Controllers
         [HttpGet]
         public int ADDTwoNumbers(int token, int firstNumber, int secondNumber)
         {
-            //if(validate(token)
-            return firstNumber + secondNumber;
+            ChannelFactory<Authenticator_Interface> authFactory;
+            Authenticator_Interface authenticator;
+            NetTcpBinding tcp = new NetTcpBinding();
+
+            string URL = "net.tcp://localhost/AuthenticationService";
+            authFactory = new ChannelFactory<Authenticator_Interface>(tcp, URL);
+            authenticator = authFactory.CreateChannel();
+
+            if (authenticator.Validate(token).Equals("validated"))
+            {
+                return firstNumber + secondNumber;
+            }
+
+            return -1;
         }
 
-        [Route("ADDThreeNumbers/{firstNumber}/{secondNumber}/{thirdNumber}")]
+        [Route("{token}/ADDThreeNumbers/{firstNumber}/{secondNumber}/{thirdNumber}")]
         [Route("ADDThreeNumbers")]
         [HttpGet]
-        public int ADDThreeNumbers(int firstNumber, int secondNumber, int thirdNumber)
+        public int ADDThreeNumbers(int token, int firstNumber, int secondNumber, int thirdNumber)
         {
-            return firstNumber + secondNumber + thirdNumber;
+            ChannelFactory<Authenticator_Interface> authFactory;
+            Authenticator_Interface authenticator;
+            NetTcpBinding tcp = new NetTcpBinding();
+
+            string URL = "net.tcp://localhost/AuthenticationService";
+            authFactory = new ChannelFactory<Authenticator_Interface>(tcp, URL);
+            authenticator = authFactory.CreateChannel();
+
+            if (authenticator.Validate(token).Equals("validated"))
+            {
+                return firstNumber +secondNumber + thirdNumber;
+            }
+
+            return -1;
+
+            
         }
 
-        [Route("MulTwoNumbers/{firstNumber}/{secondNumber}")]
+        [Route("{token}/MulTwoNumbers/{firstNumber}/{secondNumber}")]
         [Route("MulTwoNumbers")]
         [HttpGet]
-        public int MulTwoNumbers(int firstNumber, int secondNumber)
+        public int MulTwoNumbers(int token, int firstNumber, int secondNumber)
         {
-            return firstNumber * secondNumber;
+            ChannelFactory<Authenticator_Interface> authFactory;
+            Authenticator_Interface authenticator;
+            NetTcpBinding tcp = new NetTcpBinding();
+
+            string URL = "net.tcp://localhost/AuthenticationService";
+            authFactory = new ChannelFactory<Authenticator_Interface>(tcp, URL);
+            authenticator = authFactory.CreateChannel();
+
+            if (authenticator.Validate(token).Equals("validated"))
+            {
+                return firstNumber * secondNumber;
+            }
+
+            return -1;
         }
 
-        [Route("MulThreeNumbers/{firstNumber}/{secondNumber}/{thirdNumber}")]
+        [Route("{token}/MulThreeNumbers/{firstNumber}/{secondNumber}/{thirdNumber}")]
         [Route("MulThreeNumbers")]
         [HttpGet]
-        public int MulThreeNumbers(int firstNumber, int secondNumber, int thirdNumber)
+        public int MulThreeNumbers(int token, int firstNumber, int secondNumber, int thirdNumber)
         {
-            return firstNumber * secondNumber * thirdNumber;
+            ChannelFactory<Authenticator_Interface> authFactory;
+            Authenticator_Interface authenticator;
+            NetTcpBinding tcp = new NetTcpBinding();
+
+            string URL = "net.tcp://localhost/AuthenticationService";
+            authFactory = new ChannelFactory<Authenticator_Interface>(tcp, URL);
+            authenticator = authFactory.CreateChannel();
+
+            if (authenticator.Validate(token).Equals("validated"))
+            {
+                return firstNumber * secondNumber * thirdNumber;
+            }
+            return -1;
         }
 
     }
