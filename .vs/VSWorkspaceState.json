@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SOA_Calculator",
+    "\\SOA_Calculator\\Client",
+    "\\SOA_Calculator\\Service_Provider",
+    "\\SOA_Calculator\\Service_Provider\\Controllers"
+  ],
+  "SelectedNode": "\\SOA_Calculator\\Client\\MainWindow.xaml",
+  "PreviewInSolutionExplorer": false
+}
