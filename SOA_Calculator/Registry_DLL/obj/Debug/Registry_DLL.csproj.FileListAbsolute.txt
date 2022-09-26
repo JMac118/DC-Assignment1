@@ -1,0 +1,6 @@
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry_DLL\bin\Debug\Registry_DLL.dll
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry_DLL\bin\Debug\Registry_DLL.pdb
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry_DLL\obj\Debug\Registry_DLL.csproj.AssemblyReference.cache
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry_DLL\obj\Debug\Registry_DLL.csproj.CoreCompileInputs.cache
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry_DLL\obj\Debug\Registry_DLL.dll
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry_DLL\obj\Debug\Registry_DLL.pdb

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticator_DLL", "Authenticator_DLL\Authenticator_DLL.csproj", "{022FB5EA-2F3E-4D4D-8AC7-08FC6DDE4FDC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registry_DLL", "Registry_DLL\Registry_DLL.csproj", "{D4BFD7E0-3281-40DC-956D-44D0D3AD42C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{022FB5EA-2F3E-4D4D-8AC7-08FC6DDE4FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{022FB5EA-2F3E-4D4D-8AC7-08FC6DDE4FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{022FB5EA-2F3E-4D4D-8AC7-08FC6DDE4FDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4BFD7E0-3281-40DC-956D-44D0D3AD42C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4BFD7E0-3281-40DC-956D-44D0D3AD42C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4BFD7E0-3281-40DC-956D-44D0D3AD42C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4BFD7E0-3281-40DC-956D-44D0D3AD42C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

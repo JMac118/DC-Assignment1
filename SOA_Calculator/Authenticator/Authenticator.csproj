@@ -58,7 +58,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\generated_tokens.txt" />
+    <Content Include="Data\generated_tokens.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\registered_users.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
