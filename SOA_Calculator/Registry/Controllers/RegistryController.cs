@@ -137,7 +137,22 @@ namespace Registry.Controllers
                 JsonConvert.DeserializeObject<List<ServiceDescription>>(contents)
                 ?? new List<ServiceDescription>();
 
+            foreach (ServiceDescription serviceDescription in serviceDescriptions)
+            {
+                if(serviceDescription.API_Endpoint.Equals(service_endpoint))
+                {
+                    serviceDescriptions.Remove(serviceDescription);
+                    break;
+                }
+            }
 
+            var outcome = new ServiceCallOutcome()
+            {
+                Status = "Success",
+                Reason = "Published Service Description."
+            };
+
+            return Ok(outcome);
         }
 
         private bool Validate(int token)
