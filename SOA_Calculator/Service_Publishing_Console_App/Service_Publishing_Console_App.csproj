@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Authenticator_DLL\Authenticator_DLL.csproj">
+      <Project>{022fb5ea-2f3e-4d4d-8ac7-08fc6dde4fdc}</Project>
+      <Name>Authenticator_DLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Registry_DLL\Registry_DLL.csproj">
+      <Project>{d4bfd7e0-3281-40dc-956d-44d0d3ad42c0}</Project>
+      <Name>Registry_DLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

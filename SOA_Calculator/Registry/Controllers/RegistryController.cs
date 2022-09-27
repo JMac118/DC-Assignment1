@@ -20,7 +20,7 @@ namespace Registry.Controllers
     {
         static string folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-        [Route("/Publish/{token:int}")]
+        [Route("Publish/{token:int}")]
         [HttpPost]
         [ResponseType(typeof(ServiceCallOutcome))]
         public IHttpActionResult Publish(int token, [FromBody] ServiceDescription serviceDescription)
@@ -66,7 +66,7 @@ namespace Registry.Controllers
             return Ok(outcome);
         }
 
-        [Route("/Search/{token:int}/{searchTerm:alpha}")]
+        [Route("Search/{token:int}/{searchTerm:alpha}")]
         [HttpPost]
         [ResponseType(typeof(List<ServiceCallOutcome>))]
         public IHttpActionResult Search(int token, string searchTerm)
@@ -111,9 +111,9 @@ namespace Registry.Controllers
             return Ok(output);
         }
 
-        [Route("/AllServices/{token:int}")]
+        [Route("AllServices/{token:int}")]
         [HttpPost]
-        public IHttpActionResult AllServices(int token)
+        public IHttpActionResult AllServices([FromBody] int token)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
 
@@ -130,7 +130,7 @@ namespace Registry.Controllers
             return Ok(output);
         }
 
-        [Route("/Unpublish/{token:int}/{serviceEndpoint:alpha}")]
+        [Route("Unpublish/{token:int}/{serviceEndpoint:alpha}")]
         [HttpPost]
         [ResponseType(typeof(ServiceCallOutcome))]
         public IHttpActionResult Unpublish(int token, string serviceEndpoint)

@@ -56,7 +56,7 @@ namespace Authenticator
             try
             {
                 File.AppendAllText(fNameFile, input);
-                output = "sucessfully registered";
+                output = "successfully registered";
             }
             catch(Exception)
             {
