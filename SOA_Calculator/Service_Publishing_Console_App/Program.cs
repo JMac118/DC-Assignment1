@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.ServiceModel;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 using Authenticator_DLL;
+using Newtonsoft.Json;
+using Registry_DLL;
+using RestSharp;
 
 namespace Service_Publishing_Console_App
 {
     internal class Program
     {
         static Authenticator_Interface authenticator;
+        static string registryApi = "https://localhost:44329/";
         static void Main(string[] args)
         {
             ChannelFactory<Authenticator_Interface> authFactory;
@@ -156,12 +162,117 @@ namespace Service_Publishing_Console_App
         }
         private static void Publish(int token)
         {
+            Console.Clear();
+            Console.WriteLine("Publish Operation.");
             
 
+            string name, desc, endpoint, num_operands, operand_type;
+
+            Console.Write("Please enter the name of the service: ");
+            name = Console.ReadLine();
+            if (name == "")
+            {
+                Console.Clear();
+                Console.WriteLine("A name must be input to publish.");
+                return;
+            }
+
+            Console.Write("Please enter the description of the service: ");
+            desc = Console.ReadLine();
+            if (desc == "")
+            {
+                Console.Clear();
+                Console.WriteLine("A description must be input to publish.");
+                return;
+            }
+
+            Console.Write("Please enter the API endpoint of the service: ");
+            endpoint = Console.ReadLine();
+            if (endpoint == "")
+            {
+                Console.Clear();
+                Console.WriteLine("An endpoint must be input to publish.");
+                return;
+            }
+
+            Console.Write("Please enter the number of operands used in the service: ");
+            num_operands = Console.ReadLine();
+            if (num_operands == "")
+            {
+                Console.Clear();
+                Console.WriteLine("The number of operands must be input to publish.");
+                return;
+            }
+
+            Console.Write("Please enter the types of operands used in the service: ");
+            operand_type = Console.ReadLine();
+            if (operand_type == "")
+            {
+                Console.Clear();
+                Console.WriteLine("A type must be input to publish.");
+                return;
+            }
+
+            ServiceDescription serviceDescription = new ServiceDescription();
+            serviceDescription.Name = name;
+            serviceDescription.Description = desc;
+            serviceDescription.API_Endpoint = endpoint;
+            serviceDescription.Num_Operands = num_operands;
+            serviceDescription.Operand_Type = operand_type;
+
+            RestClient restClient = new RestClient(registryApi);
+            RestRequest request = new RestRequest("api/registry/Publish/" + token);
+
+            var body = JsonConvert.SerializeObject(serviceDescription);
+            request.AddParameter("Application/Json", body, ParameterType.RequestBody);
+            
+            RestResponse restResponse = restClient.ExecutePost(request);
+            if(restResponse.IsSuccessStatusCode)
+            {
+                Console.Clear();
+                ServiceCallOutcome serviceCallOutcome = JsonConvert.DeserializeObject<ServiceCallOutcome>(restResponse.Content);
+                Console.WriteLine(serviceCallOutcome.Reason);
+            }
+            else
+            {
+                Console.Clear();
+                
+                Exception exc = new Exception(restResponse.Content);
+                Console.WriteLine(exc.Message);
+            }
         }
         private static void Unpublish(int token)
         {
+            Console.Clear();
+            Console.WriteLine("Unpublish Operation.");
 
+            string endpoint;
+
+            Console.Write("Please enter the API endpoint of the service: ");
+            endpoint = Console.ReadLine();
+            if (endpoint == "")
+            {
+                Console.Clear();
+                Console.WriteLine("An endpoint must be input to publish.");
+                return;
+            }
+
+            RestClient restClient = new RestClient(registryApi);
+            RestRequest request = new RestRequest("api/registry/Unpublish/" + token + "/" + endpoint);
+
+            RestResponse restResponse = restClient.ExecutePost(request);
+            if (restResponse.IsSuccessStatusCode)
+            {
+                Console.Clear();
+                ServiceCallOutcome serviceCallOutcome = JsonConvert.DeserializeObject<ServiceCallOutcome>(restResponse.Content);
+                Console.WriteLine(serviceCallOutcome.Reason);
+            }
+            else
+            {
+                Console.Clear();
+                Exception exc = new Exception(restResponse.Content);
+                Console.WriteLine(exc.Message);
+            }
         }
     }
 }

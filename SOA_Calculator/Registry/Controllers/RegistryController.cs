@@ -12,13 +12,15 @@ using Registry_DLL;
 using Authenticator_DLL;
 using System.ServiceModel;
 using System.Web.Http.Description;
+using System.Web;
 
 namespace Registry.Controllers
 {
     [RoutePrefix("api/registry")]
     public class RegistryController : ApiController
     {
-        static string folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //static string folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        static string folder = HttpRuntime.AppDomainAppPath;
 
         [Route("Publish/{token:int}")]
         [HttpPost]
@@ -159,6 +161,10 @@ namespace Registry.Controllers
                 }
             }
 
+            string json = JsonConvert.SerializeObject(serviceDescriptions);
+
+            File.WriteAllText(fNameFile, json);
+
             var outcome = new ServiceCallOutcome()
             {
                 Status = "Success",
@@ -184,19 +190,18 @@ namespace Registry.Controllers
             }
 
             return false;
-
         }
 
         private HttpResponseException GetDeniedResponse()
         {
-            var badOutcome = new ServiceCallOutcome()
+            /*var badOutcome = new ServiceCallOutcome()
             {
                 Status = "Denied",
                 Reason = "Authentication Error."
-            };
+            };*/
             var response = new HttpResponseMessage(HttpStatusCode.BadRequest)
             {
-                Content = new StringContent(JsonConvert.SerializeObject(badOutcome))
+                Content = new StringContent("Authentication Error.")
             };
             HttpResponseException httpResponseException = new HttpResponseException(response);
 

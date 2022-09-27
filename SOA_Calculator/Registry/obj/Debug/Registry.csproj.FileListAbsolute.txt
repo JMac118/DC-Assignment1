@@ -1,3 +1,4 @@
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\App_Data\service_description.txt
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry.dll.config
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry.pdb
