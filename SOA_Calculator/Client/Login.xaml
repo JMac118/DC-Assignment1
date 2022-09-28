@@ -65,6 +65,6 @@
         </Button>
         <Button Content="Home" HorizontalAlignment="Left" Margin="689,18,0,0" VerticalAlignment="Top" Background="White" Foreground="BlueViolet" FontWeight="DemiBold" BorderThickness="0" Click="HomeButton_Click"/>
         <Button Content="Register" HorizontalAlignment="Left" Margin="738,18,0,0" VerticalAlignment="Top" Background="White" Foreground="BlueViolet" FontWeight="DemiBold" BorderThickness="0" Click="RegisterButton_Click"/>
-        <Label Name="StatusLabel" Content="" HorizontalAlignment="Left" Margin="342,48,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+        <Label Name="StatusLabel" Content="" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Width="800" HorizontalContentAlignment="Center" />
     </Grid>
 </Window>

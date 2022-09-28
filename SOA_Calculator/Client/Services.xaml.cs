@@ -36,6 +36,7 @@ namespace Client
             InitializeComponent();
             this.token = token;
 
+            TestContainer.Visibility = Visibility.Hidden;
             SearchTextBox.Visibility = Visibility.Hidden;
             SearchButton.Visibility = Visibility.Hidden;
 
@@ -115,6 +116,8 @@ namespace Client
                 stackPanel.Children.Add(new TextBox { Text = "", Width = 30, Height=25});
                 container.Children.Add(stackPanel);
             }
+
+            TestContainer.Visibility = Visibility.Visible;
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
@@ -149,6 +152,10 @@ namespace Client
                                 {
                                     MessageBox.Show("No inputs entered");
                                 }
+                                catch(OverflowException)
+                                {
+                                    MessageBox.Show("Invalid input: input is too large");
+                                }
                             }
 
                         }
@@ -166,14 +173,6 @@ namespace Client
                 // Do the thing with the string output         
                 ResultTextBlock.Text = restResponse.Content;
             }
-            else
-            {
-                //Exception exc = new Exception(restResponse.Content);
-                // Error message output
-                // Console.WriteLine(exc.Message);
-                ResultTextBlock.Text = restResponse.Content;
-            }
-
         }
     }
 }
