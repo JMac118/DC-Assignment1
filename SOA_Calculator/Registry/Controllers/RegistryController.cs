@@ -127,7 +127,12 @@ namespace Registry.Controllers
 
             string contents = File.ReadAllText(fNameFile);
 
-            var output = JsonConvert.SerializeObject(contents);
+            // List of all the stored service descriptions.
+            List<ServiceDescription> serviceDescriptions =
+                JsonConvert.DeserializeObject<List<ServiceDescription>>(contents)
+                ?? new List<ServiceDescription>();
+
+            var output = JsonConvert.SerializeObject(serviceDescriptions);
 
             return Ok(output);
         }
