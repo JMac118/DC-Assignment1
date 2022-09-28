@@ -48,7 +48,7 @@
             <Button Content="Test" Margin="10" Click="TestButton_Click"/>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Label Content="Result" FontWeight="Bold"/>
-                <TextBlock Name="ResultTextBlock" Width="241"/>
+                <TextBlock Name="ResultTextBlock" Width="241" VerticalAlignment="Center"/>
             </StackPanel>
             
         </StackPanel>

@@ -53,7 +53,7 @@ namespace Client
             {
                 Exception exc = new Exception(restResponse.Content);
                 // Error message output
-                // Console.WriteLine(exc.Message);
+                Console.WriteLine(exc.Message);
             }
 
         }
@@ -68,18 +68,22 @@ namespace Client
         {
             SearchTextBox.Visibility = Visibility.Hidden;
             SearchButton.Visibility = Visibility.Hidden;
+            SearchTextBox.Text = "";
             ServiceListView.ItemsSource = ServiceDescriptions;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             string searchStr = SearchTextBox.Text;
-            RestClient restClient = new RestClient("https://localhost:44329/");
-            RestRequest request = new RestRequest("api/registry/Search/" + token + "/" + searchStr);
-            RestResponse restResponse = restClient.ExecutePost(request);
+            if (searchStr.Length != 0)
+            {
+                RestClient restClient = new RestClient("https://localhost:44329/");
+                RestRequest request = new RestRequest("api/registry/Search/" + token + "/" + searchStr);
+                RestResponse restResponse = restClient.ExecutePost(request);
 
-            SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
-            ServiceListView.ItemsSource = SearchServiceDescriptions;
+                SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
+                ServiceListView.ItemsSource = SearchServiceDescriptions;
+            }
         }
 
         private void TryButton_Click(object sender, RoutedEventArgs e)
@@ -164,9 +168,10 @@ namespace Client
             }
             else
             {
-                Exception exc = new Exception(restResponse.Content);
+                //Exception exc = new Exception(restResponse.Content);
                 // Error message output
                 // Console.WriteLine(exc.Message);
+                ResultTextBlock.Text = restResponse.Content;
             }
 
         }
