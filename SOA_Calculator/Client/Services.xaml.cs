@@ -26,7 +26,9 @@ namespace Client
         protected int token;
         public List<ServiceDescription> ServiceDescriptions { get; set; }
         public List<ServiceDescription> SearchServiceDescriptions { get; set; }
-       
+
+        private ServiceDescription curServiceDescription;
+
 
 
         public Services(int token)
@@ -44,8 +46,8 @@ namespace Client
             if (restResponse.IsSuccessStatusCode)
             {
                 // Do the thing with the string output
-               ServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
-               ServiceListView.ItemsSource = ServiceDescriptions;
+                ServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
+                ServiceListView.ItemsSource = ServiceDescriptions;
             }
             else
             {
@@ -76,15 +78,96 @@ namespace Client
             RestRequest request = new RestRequest("api/registry/Search/" + token + "/" + searchStr);
             RestResponse restResponse = restClient.ExecutePost(request);
 
-            SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content); 
+            SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
             ServiceListView.ItemsSource = SearchServiceDescriptions;
+        }
+
+        private void TryButton_Click(object sender, RoutedEventArgs e)
+        {
+            int numOp = 0;
+            Button button = sender as Button;
+            Button testButton = new Button();
+            curServiceDescription = button.DataContext as ServiceDescription;
+            var container = InputContainer;
+
+            container.Children.Clear();
+            try
+            {
+                numOp = int.Parse(curServiceDescription.Num_Operands);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error: Invalid Num_Operands value for " + curServiceDescription.Name);
+            }
+            catch (ArgumentNullException)
+            {
+                Console.WriteLine("Error: " + curServiceDescription.Name + " has empty Num_Operands value");
+            }
+
+            for (int i = 0; i < numOp; i++)
+            {
+                var stackPanel = new StackPanel { Name= "Stack" + i, Orientation = Orientation.Horizontal, Height = 30 };
+                stackPanel.Children.Add(new Label { Name= "TextBox" + i, Content = "Input " + (i + 1) });
+                stackPanel.Children.Add(new TextBox { Text = "", Width = 30, Height=25});
+                container.Children.Add(stackPanel);
+            }
         }
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            ServiceDescription serviceDescription = button.DataContext as ServiceDescription;
+            string reqStr = "api/calculator/" + token + "/" + curServiceDescription.Name + "/";
 
+            TextBox textbox = null;
+            StackPanel parent = null;
+
+            foreach(var control in InputContainer.Children)
+            {
+                if (control is StackPanel)
+                {
+                    parent = (StackPanel)control;
+                    foreach(Control child in parent.Children)
+                    {
+                        if(child is TextBox)
+                        {
+                            textbox = (TextBox)child;
+                            if (textbox != null)
+                            {
+                                try
+                                {
+                                    reqStr += int.Parse(textbox.Text) + "/";
+                                }
+                                catch(FormatException)
+                                {
+                                    MessageBox.Show("Invalid input: inputs can only be interger");
+                                }
+                                catch(ArgumentNullException)
+                                {
+                                    MessageBox.Show("No inputs entered");
+                                }
+                            }
+
+                        }
+                    }
+                }    
+                    
+            }
+
+            RestClient restClient = new RestClient(curServiceDescription.API_Endpoint);
+            RestRequest request = new RestRequest(reqStr);
+            RestResponse restResponse = restClient.ExecuteGet(request);
+
+            if (restResponse.IsSuccessStatusCode)
+            {
+                // Do the thing with the string output         
+                ResultTextBlock.Text = restResponse.Content;
+            }
+            else
+            {
+                Exception exc = new Exception(restResponse.Content);
+                // Error message output
+                // Console.WriteLine(exc.Message);
+            }
 
         }
     }

@@ -28,8 +28,8 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Background="White"  Width="400">
                                 <Label Content="Operand type" FontSize="11"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Operand_Type}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center" Width="200"/>
-                                <Button Content="Test" Height="20" Width="50" HorizontalAlignment="Right" Margin="0 0 20 5" FontSize="11" Click="TestButton_Click"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Operand_Type}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center" Width="180"/>
+                                <Button Content="Try it out" Height="20" Width="60" HorizontalAlignment="Right" Margin="0 0 20 5" FontSize="11" Click="TryButton_Click"/>
                             </StackPanel>
 
                         </StackPanel>
@@ -42,15 +42,15 @@
         <Button Name="LookupButton" Content="service lookup" HorizontalAlignment="Left" Margin="320,77,0,0" VerticalAlignment="Top" Click="LookupButton_Click"/>
         <TextBox Name="SearchTextBox" HorizontalAlignment="Left" Margin="33,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201"/>
         <Button Name="SearchButton" Content="search" HorizontalAlignment="Left" Margin="239,78,0,0" VerticalAlignment="Top" Height="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10px" Click="SearchButton_Click"/>
-        <Grid Margin="490,87,25,40">
-            <Label Content="Testing box" FontSize="12px" FontWeight="Medium" Margin="0,39,0,0"/>
-        </Grid>
-
-
-
-
-
-
-
+        <StackPanel  Name="TestContainer" Margin="490,121,25,40">
+            <Label x:Name="TestLabel" Content="Testing box" FontSize="12px" FontWeight="Medium"/>
+            <StackPanel Name="InputContainer" Height="100"/>
+            <Button Content="Test" Margin="10" Click="TestButton_Click"/>
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="Result" FontWeight="Bold"/>
+                <TextBlock Name="ResultTextBlock" Width="241"/>
+            </StackPanel>
+            
+        </StackPanel>
     </Grid>
 </Window>
