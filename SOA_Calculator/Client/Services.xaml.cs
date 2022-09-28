@@ -40,6 +40,29 @@ namespace Client
             SearchTextBox.Visibility = Visibility.Hidden;
             SearchButton.Visibility = Visibility.Hidden;
 
+            GetAllServices();
+
+        }
+
+        private void LookupButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Visibility = Visibility.Visible;
+            SearchButton.Visibility = Visibility.Visible;
+        }
+
+        private void AllButton_Click(object sender, RoutedEventArgs e)
+        {
+            SearchTextBox.Visibility = Visibility.Hidden;
+            SearchButton.Visibility = Visibility.Hidden;
+            SearchTextBox.Text = "";
+
+            GetAllServices();
+
+            ServiceListView.ItemsSource = ServiceDescriptions;
+        }
+
+        private void GetAllServices()
+        {
             RestClient restClient = new RestClient("https://localhost:44329/");
             RestRequest request = new RestRequest("api/registry/AllServices/" + token);
             RestResponse restResponse = restClient.ExecuteGet(request);
@@ -56,21 +79,6 @@ namespace Client
                 // Error message output
                 Console.WriteLine(exc.Message);
             }
-
-        }
-
-        private void LookupButton_Click(object sender, RoutedEventArgs e)
-        {
-            SearchTextBox.Visibility = Visibility.Visible;
-            SearchButton.Visibility = Visibility.Visible;
-        }
-
-        private void AllButton_Click(object sender, RoutedEventArgs e)
-        {
-            SearchTextBox.Visibility = Visibility.Hidden;
-            SearchButton.Visibility = Visibility.Hidden;
-            SearchTextBox.Text = "";
-            ServiceListView.ItemsSource = ServiceDescriptions;
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
