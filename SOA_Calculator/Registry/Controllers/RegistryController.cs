@@ -114,7 +114,7 @@ namespace Registry.Controllers
         }
 
         [Route("AllServices/{token:int}")]
-        [HttpPost]
+        [HttpGet]
         public IHttpActionResult AllServices(int token)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
