@@ -24,5 +24,19 @@ namespace Client
         {
             InitializeComponent();
         }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            Registration registration = new Registration();
+            registration.Show();
+            Close();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            Close();
+        }
     }
 }

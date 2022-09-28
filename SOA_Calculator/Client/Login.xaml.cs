@@ -65,9 +65,8 @@ namespace Client
                     PasswordErrorText.Text = "";
                     try
                     {
-                        token = authenticator.Login(EmailErrorText.Text, PasswordTextBox.Text);
-                        Services services = new Services();
-                        services.Token = token;
+                        token = authenticator.Login(EmailTextBox.Text, PasswordTextBox.Text);
+                        Services services = new Services(token);
                         services.Show();
                         Close();
                     }

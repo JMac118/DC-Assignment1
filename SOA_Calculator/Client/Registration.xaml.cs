@@ -61,7 +61,7 @@ namespace Client
                 else
                 {
                     PasswordErrorText.Text = "";
-                    String regStatus = authenticator.Register(EmailErrorText.Text, PasswordTextBox.Text);
+                    String regStatus = authenticator.Register(EmailTextBox.Text, PasswordTextBox.Text);
 
                     if(regStatus.Equals("failed to register"))
                     {

@@ -26,17 +26,13 @@ namespace Client
         protected int token;
         public List<ServiceDescription> ServiceDescriptions { get; set; }
         public List<ServiceDescription> SearchServiceDescriptions { get; set; }
-        public int Token
+       
+
+
+        public Services(int token)
         {
-            get { return token; }
-            set { token = value; }
-        }
-
-
-        public Services()
-        {
-
             InitializeComponent();
+            this.token = token;
 
             SearchTextBox.Visibility = Visibility.Hidden;
             SearchButton.Visibility = Visibility.Hidden;
