@@ -98,11 +98,11 @@ namespace Registry.Controllers
                     foreach (PropertyInfo prop in serviceDescription.GetType().GetProperties())
                     {
                         // Gets the string value of the variable for comparison
-                        string str = prop.GetValue(serviceDescription).ToString();
+                        string str = prop.GetValue(serviceDescription).ToString().ToLower();
                         //if (str.Contains(searchTerm))
-                        if(str.Length < searchTerm.Length)
+                        if(str.Length > searchTerm.Length)
                         {
-                            if (str.Contains(searchTerm))
+                            if (str.Contains(searchTerm.ToLower()))
                             {
                                 // If there is a match, then add this service description to the list
                                 // and break instead of checking the rest of the variables.
@@ -110,7 +110,7 @@ namespace Registry.Controllers
                                 break;
                             }
                         }
-                        else if(str.Equals(searchTerm))
+                        else if(str.Equals(searchTerm.ToLower()))
                         {
                             outputServiceDescriptions.Add(serviceDescription);
                             break;
