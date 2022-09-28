@@ -35,7 +35,9 @@ namespace Authenticator
                 {
                     if(inputUser.Equals(user))
                     {
-                        return GenerateToken();
+                        int token = GenerateToken();
+                        AddToken(token);
+                        return token;
                     }
                 }
             }
@@ -55,8 +57,8 @@ namespace Authenticator
             string output = "";
             try
             {
-                File.AppendAllText(fNameFile, input);
-                output = "sucessfully registered";
+                File.AppendAllText(fNameFile, input + System.Environment.NewLine);
+                output = "successfully registered";
             }
             catch(Exception)
             {
@@ -125,6 +127,12 @@ namespace Authenticator
             string fNameFile = folder + "/Data/generated_tokens.txt";
             File.WriteAllText(fNameFile, String.Empty);
             Console.WriteLine("Cleared tokens");
+        }
+
+        private void AddToken(int token)
+        {
+            string fNameFile = folder + "/Data/generated_tokens.txt";
+            File.AppendAllText(fNameFile, token.ToString()+System.Environment.NewLine);
         }
     }
 }

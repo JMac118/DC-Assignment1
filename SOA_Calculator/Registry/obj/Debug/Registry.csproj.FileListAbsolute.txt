@@ -1,3 +1,4 @@
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\App_Data\service_description.txt
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry.dll.config
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry.pdb
@@ -51,9 +52,11 @@ F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\roslyn\vbc.rsp
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\roslyn\VBCSCompiler.exe
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\roslyn\VBCSCompiler.exe.config
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Antlr3.Runtime.dll
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Authenticator_DLL.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Microsoft.Web.Infrastructure.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Newtonsoft.Json.dll
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry_DLL.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Net.Http.Formatting.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Web.Helpers.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Web.Http.dll
@@ -65,6 +68,8 @@ F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Web.WebPages.Deployment
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Web.WebPages.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Web.WebPages.Razor.dll
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\WebGrease.dll
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Authenticator_DLL.pdb
+F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Registry_DLL.pdb
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\Newtonsoft.Json.xml
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Net.Http.Formatting.xml
 F:\Uni\DC-Assignment1\SOA_Calculator\Registry\bin\System.Web.Helpers.xml

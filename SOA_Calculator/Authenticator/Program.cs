@@ -39,17 +39,19 @@ namespace Authenticator
 
             host.AddServiceEndpoint(typeof(Authenticator_Interface), tcp, "net.tcp://localhost/AuthenticationService");
 
-            int numMinutes = PromptUserForMinutes();
 
             //Task cleanupTask = authServer.SetTokenCleanupPeriod(numMinutes);
             //cleanupTask.Start();
-            Task.Run(() =>
-            {
-                authServer.SetTokenCleanupPeriod(numMinutes);
-            });
-
 
             host.Open();
+
+            int numMinutes = PromptUserForMinutes();
+
+            //Task.Run(() =>
+            //{
+                authServer.SetTokenCleanupPeriod(numMinutes);
+            //});
+
             Console.WriteLine("Service is Online. \nCleaning saved tokens every " + numMinutes + " minutes.\nEnter any key to close server...");
             Console.ReadLine();
 

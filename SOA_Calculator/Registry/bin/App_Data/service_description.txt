@@ -1,0 +1,1 @@
+[{"Name":"l","Description":"k","API_Endpoint":"j","Num_Operands":"h","Operand_Type":"g"},{"Name":"t","Description":"e","API_Endpoint":"b","Num_Operands":"c","Operand_Type":"g"},{"Name":"g","Description":"c","API_Endpoint":"b","Num_Operands":"y","Operand_Type":"e"}]
