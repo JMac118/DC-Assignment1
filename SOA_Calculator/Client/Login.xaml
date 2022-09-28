@@ -14,7 +14,7 @@
         </Rectangle>
         <Label Content="Login" FontSize="24" FontWeight="Bold" Margin="246,109,400,283" />
 
-        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" FontSize="14"  Margin="0,178,0,0" TextWrapping="Wrap" Width="268" Height="28" BorderThickness="2" TextChanged="EmailTextBox_TextChanged">
+        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Center" VerticalAlignment="Top"  VerticalContentAlignment="Center" FontSize="14"  Margin="0,178,0,0" TextWrapping="Wrap" Width="268" Height="28" BorderThickness="2">
             <TextBox.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="3"/>

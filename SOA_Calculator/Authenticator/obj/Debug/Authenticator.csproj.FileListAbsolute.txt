@@ -11,3 +11,16 @@ F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.cspro
 F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.csproj.CopyComplete
 F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.exe
 F:\Uni\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.pdb
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\bin\Debug\Data\generated_tokens.txt
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\bin\Debug\Data\registered_users.txt
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\bin\Debug\Authenticator.exe.config
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\bin\Debug\Authenticator.exe
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\bin\Debug\Authenticator.pdb
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\bin\Debug\Authenticator_DLL.dll
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\bin\Debug\Authenticator_DLL.pdb
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.csproj.AssemblyReference.cache
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.csproj.SuggestedBindingRedirects.cache
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.csproj.CoreCompileInputs.cache
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.csproj.CopyComplete
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.exe
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Authenticator\obj\Debug\Authenticator.pdb

@@ -23,7 +23,7 @@ namespace Client
     public partial class Login : Window
     {
         Authenticator_Interface authenticator;
-        internal int token;
+        protected int token;
 
         public Login()
         {
@@ -67,6 +67,7 @@ namespace Client
                     {
                         token = authenticator.Login(EmailErrorText.Text, PasswordTextBox.Text);
                         Services services = new Services();
+                        services.Token = token;
                         services.Show();
                         Close();
                     }

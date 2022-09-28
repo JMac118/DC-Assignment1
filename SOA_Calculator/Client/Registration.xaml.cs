@@ -23,7 +23,7 @@ namespace Client
     public partial class Registration : Window
     {
         Authenticator_Interface authenticator;
-        int token;
+        //int token;
 
         public Registration()
         {

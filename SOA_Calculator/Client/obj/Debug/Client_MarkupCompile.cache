@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Uni\DC-Assignment1\SOA_Calculator\Client\obj\Debug\
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\Debug\
 Client
 none
 false
 DEBUG;TRACE
-F:\Uni\DC-Assignment1\SOA_Calculator\Client\App.xaml
-31088911665
+C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\App.xaml
+4-2087094821
 
-7645458325
-13-1310406943
-Login.xaml;MainWindow.xaml;Registration.xaml;
+8460148867
+2974175782
+Login.xaml;MainWindow.xaml;Registration.xaml;Services.xaml;
 
-True
+False
 

@@ -6,39 +6,42 @@
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
         Title="Services" Height="450" Width="800">
+    <Window.DataContext>
+        <local:Services/>
+    </Window.DataContext>
     <Grid>
         <Label Content="Services" FontSize="20px" FontWeight="Bold" Margin="30,27,678,370"/>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="33,121,35,40">
+        <ListView Name="ServiceListView" d:ItemsSource="{Binding ServiceDescriptions}" Margin="33,121,333,40">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Expander Header="Some Service" Width="690" FontWeight="Bold" FontSize="14" Background="#FFC0E1FF" IsExpanded="True">
+                    <Expander Header="{Binding Name}" Width="690" FontWeight="Bold" FontSize="14" Background="#FFC0E1FF" IsExpanded="True">
                         <StackPanel Width="680" Background="White" Orientation="Vertical" Margin="10">
                             <StackPanel Orientation="Horizontal" Background="White">
                                 <Label Content="Description" FontSize="11"/>
-                                <TextBlock TextWrapping="Wrap" Text="Adding two numbers" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Background="White">
                                 <Label Content="API endpoint" FontSize="11"/>
-                                <TextBlock TextWrapping="Wrap" Text="Adding two numbers" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding API_Endpoint}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Background="White">
                                 <Label Content="Number of operands" FontSize="11"/>
-                                <TextBlock TextWrapping="Wrap" Text="Adding two numbers" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Num_Operands}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Background="White">
                                 <Label Content="Operand type" FontSize="11"/>
-                                <TextBlock TextWrapping="Wrap" Text="Adding two numbers" FontWeight="Normal" FontSize="11" VerticalAlignment="Center" Width="527"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Operand_Type}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center" Width="527"/>
                                 <Button Content="SELECT" Height="20" Width="50" HorizontalAlignment="Right" Margin="0 0 20 5" FontSize="11"/>
                             </StackPanel>
-                            
+
                         </StackPanel>
                     </Expander>
 
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Name="AllButton" Content="show all" HorizontalAlignment="Left" Margin="718,75,0,0" VerticalAlignment="Top" Click="AllButton_Click"/>
-        <Button Name="LookupButton" Content="service lookup" HorizontalAlignment="Left" Margin="621,75,0,0" VerticalAlignment="Top" Click="LookupButton_Click"/>
+        <Button Name="AllButton" Content="show all" HorizontalAlignment="Left" Margin="420,76,0,0" VerticalAlignment="Top" Click="AllButton_Click"/>
+        <Button Name="LookupButton" Content="service lookup" HorizontalAlignment="Left" Margin="320,77,0,0" VerticalAlignment="Top" Click="LookupButton_Click"/>
         <TextBox Name="SearchTextBox" HorizontalAlignment="Left" Margin="33,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201"/>
         <Button Name="SearchButton" Content="search" HorizontalAlignment="Left" Margin="239,78,0,0" VerticalAlignment="Top" Height="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10px" Click="SearchButton_Click"/>
 
