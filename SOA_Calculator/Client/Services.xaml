@@ -52,5 +52,6 @@
             </StackPanel>
             
         </StackPanel>
+        <ProgressBar Name="ProgressBar" HorizontalAlignment="Left" Height="10" Margin="664,76,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>
