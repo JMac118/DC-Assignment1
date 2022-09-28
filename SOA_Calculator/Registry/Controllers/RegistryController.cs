@@ -68,7 +68,7 @@ namespace Registry.Controllers
             return Ok(outcome);
         }
 
-        [Route("Search/{token:int}/{searchTerm:alpha}")]
+        [Route("Search/{token:int}/{searchTerm}")]
         [HttpPost]
         [ResponseType(typeof(List<ServiceDescription>))]
         public IHttpActionResult Search(int token, string searchTerm)
