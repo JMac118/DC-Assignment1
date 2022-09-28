@@ -8,28 +8,28 @@
         Title="Services" Height="450" Width="800">
 
     <Grid>
-        <Label Content="Services" FontSize="20px" FontWeight="Bold" Margin="30,27,678,370"/>
-        <ListView Name="ServiceListView" d:ItemsSource="{Binding ServiceDescriptions}" Margin="33,121,333,40">
+        <Label Content="Services" FontSize="18px" FontWeight="Bold" Margin="30,27,0,356"/>
+        <ListView Name="ServiceListView" Margin="33,121,333,40">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Expander Header="{Binding Name}" Width="690" FontWeight="Bold" FontSize="14" Background="#FFC0E1FF" IsExpanded="True">
-                        <StackPanel Width="680" Background="White" Orientation="Vertical" Margin="10">
-                            <StackPanel Orientation="Horizontal" Background="White">
+                    <Expander Header="{Binding Name}"  Width="400" FontWeight="Bold" FontSize="14" Background="#FFC0E1FF" IsExpanded="false">
+                        <StackPanel Width="440" Background="White" Orientation="Vertical" Margin="10" >
+                            <StackPanel Orientation="Horizontal" Background="White" Width="400">
                                 <Label Content="Description" FontSize="11"/>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding Description}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Background="White">
+                            <StackPanel Orientation="Horizontal" Background="White"  Width="400">
                                 <Label Content="API endpoint" FontSize="11"/>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding API_Endpoint}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Background="White">
+                            <StackPanel Orientation="Horizontal" Background="White"  Width="400">
                                 <Label Content="Number of operands" FontSize="11"/>
                                 <TextBlock TextWrapping="Wrap" Text="{Binding Num_Operands}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Background="White">
+                            <StackPanel Orientation="Horizontal" Background="White"  Width="400">
                                 <Label Content="Operand type" FontSize="11"/>
-                                <TextBlock TextWrapping="Wrap" Text="{Binding Operand_Type}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center" Width="527"/>
-                                <Button Content="SELECT" Height="20" Width="50" HorizontalAlignment="Right" Margin="0 0 20 5" FontSize="11"/>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding Operand_Type}" FontWeight="Normal" FontSize="11" VerticalAlignment="Center" Width="200"/>
+                                <Button Content="Test" Height="20" Width="50" HorizontalAlignment="Right" Margin="0 0 20 5" FontSize="11" Click="TestButton_Click"/>
                             </StackPanel>
 
                         </StackPanel>
@@ -42,7 +42,10 @@
         <Button Name="LookupButton" Content="service lookup" HorizontalAlignment="Left" Margin="320,77,0,0" VerticalAlignment="Top" Click="LookupButton_Click"/>
         <TextBox Name="SearchTextBox" HorizontalAlignment="Left" Margin="33,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201"/>
         <Button Name="SearchButton" Content="search" HorizontalAlignment="Left" Margin="239,78,0,0" VerticalAlignment="Top" Height="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="10px" Click="SearchButton_Click"/>
-  
+        <Grid Margin="490,87,25,40">
+            <Label Content="Testing box" FontSize="12px" FontWeight="Medium" Margin="0,39,0,0"/>
+        </Grid>
+
 
 
 

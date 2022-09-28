@@ -79,5 +79,13 @@ namespace Client
             SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content); 
             ServiceListView.ItemsSource = SearchServiceDescriptions;
         }
+
+        private void TestButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            ServiceDescription serviceDescription = button.DataContext as ServiceDescription;
+
+
+        }
     }
 }

@@ -13,7 +13,6 @@ C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\D
 C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\Debug\Registration.g.cs
 C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\Debug\Services.g.cs
 C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\Debug\App.g.cs
-C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\Debug\Client_MarkupCompile.cache
 C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\obj\Debug\Client_MarkupCompile.lref
 C:\Users\Sharron\source\repos\JMac118\DC-Assignment1\SOA_Calculator\Client\bin\Debug\Client.exe.config
