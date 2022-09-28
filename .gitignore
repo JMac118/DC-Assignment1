@@ -38,3 +38,6 @@ SOA_Calculator/Service_Provider/obj/Debug/DesignTimeResolveAssemblyReferencesInp
 SOA_Calculator/Service_Provider/obj/Debug/Service_Provider.csproj.AssemblyReference.cache
 SOA_Calculator/Service_Publishing_Console_App/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 SOA_Calculator/Service_Publishing_Console_App/obj/Debug/Service_Publishing_Console_App.csproj.AssemblyReference.cache
+*.vsidx
+SOA_Calculator/.vs/SOA_Calculator/v17/.suo
+SOA_Calculator/.vs/SOA_Calculator/config/applicationhost.config
