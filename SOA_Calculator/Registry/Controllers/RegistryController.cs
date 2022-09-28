@@ -154,10 +154,10 @@ namespace Registry.Controllers
             return Ok(serviceDescriptions);
         }
 
-        [Route("Unpublish/{token:int}/{serviceEndpoint:alpha}")]
+        [Route("Unpublish/{token:int}")]
         [HttpPost]
         [ResponseType(typeof(ServiceCallOutcome))]
-        public IHttpActionResult Unpublish(int token, string serviceEndpoint)
+        public IHttpActionResult Unpublish(int token, [FromBody]string serviceEndpoint)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
 
