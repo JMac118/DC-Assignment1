@@ -34,6 +34,8 @@ namespace Client
             string URL = "net.tcp://localhost/AuthenticationService";
             authFactory = new ChannelFactory<Authenticator_Interface>(tcp, URL);
             authenticator = authFactory.CreateChannel();
+
+            StatusLabel.Content = "";
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -64,7 +66,9 @@ namespace Client
                     try
                     {
                         token = authenticator.Login(EmailErrorText.Text, PasswordTextBox.Text);
-
+                        Services services = new Services();
+                        services.Show();
+                        Close();
                     }
                     catch(FaultException<InvalidUserFault> ex)
                     {
