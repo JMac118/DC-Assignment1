@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Registry_DLL;
 using Newtonsoft.Json;
+using System.Threading;
 
 namespace Client
 {
@@ -40,7 +41,7 @@ namespace Client
             SearchTextBox.Visibility = Visibility.Hidden;
             SearchButton.Visibility = Visibility.Hidden;
 
-            GetAllServices();
+            Task.Run(() => GetAllServices());
 
         }
 
@@ -56,22 +57,25 @@ namespace Client
             SearchButton.Visibility = Visibility.Hidden;
             SearchTextBox.Text = "";
 
-            GetAllServices();
+            Task.Run(() => GetAllServices());
 
-            ServiceListView.ItemsSource = ServiceDescriptions;
+            //ServiceListView.ItemsSource = ServiceDescriptions;
         }
 
-        private void GetAllServices()
+        private async void GetAllServices()
         {
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.IsIndeterminate = true));
+
+            Thread.Sleep(1000);
             RestClient restClient = new RestClient("https://localhost:44329/");
             RestRequest request = new RestRequest("api/registry/AllServices/" + token);
-            RestResponse restResponse = restClient.ExecuteGet(request);
+            RestResponse restResponse = await restClient.ExecuteGetAsync(request);
 
             if (restResponse.IsSuccessStatusCode)
             {
                 // Do the thing with the string output
                 ServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
-                ServiceListView.ItemsSource = ServiceDescriptions;
+                ServiceListView.Dispatcher.Invoke(new Action(() => ServiceListView.ItemsSource = ServiceDescriptions));
             }
             else
             {
@@ -79,6 +83,7 @@ namespace Client
                 // Error message output
                 Console.WriteLine(exc.Message);
             }
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.IsIndeterminate = false));
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -86,13 +91,29 @@ namespace Client
             string searchStr = SearchTextBox.Text;
             if (searchStr.Length != 0)
             {
-                RestClient restClient = new RestClient("https://localhost:44329/");
-                RestRequest request = new RestRequest("api/registry/Search/" + token + "/" + searchStr);
-                RestResponse restResponse = restClient.ExecutePost(request);
-
-                SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
-                ServiceListView.ItemsSource = SearchServiceDescriptions;
+                Task.Run(() => SearchAsync(searchStr));
             }
+        }
+
+        private async void SearchAsync(string searchStr)
+        {
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.IsIndeterminate = true));
+            Thread.Sleep(1000);
+
+            RestClient restClient = new RestClient("https://localhost:44329/");
+            RestRequest request = new RestRequest("api/registry/Search/" + token + "/" + searchStr);
+            RestResponse restResponse = await restClient.ExecutePostAsync(request);
+
+            // It hated using SearchServiceDescription and didn't want to update it no matter what.
+            //SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
+            //ServiceListView.Dispatcher.Invoke(new Action(() => ServiceListView.ItemsSource = ServiceDescriptions));
+
+            List<ServiceDescription> descriptions = new List<ServiceDescription>();
+            descriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
+            ServiceListView.Dispatcher.Invoke(new Action(() => ServiceListView.ItemsSource = descriptions));
+
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.IsIndeterminate = false));
+
         }
 
         private void TryButton_Click(object sender, RoutedEventArgs e)
@@ -172,15 +193,24 @@ namespace Client
                     
             }
 
+            Task.Run(() => TestAsync(reqStr));
+        }
+
+        private async void TestAsync(string reqStr)
+        {
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.IsIndeterminate = true));
+            Thread.Sleep(1000);
+
             RestClient restClient = new RestClient(curServiceDescription.API_Endpoint);
             RestRequest request = new RestRequest(reqStr);
-            RestResponse restResponse = restClient.ExecuteGet(request);
+            RestResponse restResponse = await restClient.ExecuteGetAsync(request);
 
             if (restResponse.IsSuccessStatusCode)
             {
                 // Do the thing with the string output         
-                ResultTextBlock.Text = restResponse.Content;
+                ResultTextBlock.Dispatcher.Invoke(new Action(() =>ResultTextBlock.Text = restResponse.Content));
             }
+            ProgressBar.Dispatcher.Invoke(new Action(() => ProgressBar.IsIndeterminate = false));
         }
     }
 }
