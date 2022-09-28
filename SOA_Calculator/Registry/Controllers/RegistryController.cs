@@ -70,7 +70,7 @@ namespace Registry.Controllers
 
         [Route("Search/{token:int}/{searchTerm:alpha}")]
         [HttpPost]
-        [ResponseType(typeof(List<ServiceCallOutcome>))]
+        [ResponseType(typeof(List<ServiceDescription>))]
         public IHttpActionResult Search(int token, string searchTerm)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
@@ -90,31 +90,47 @@ namespace Registry.Controllers
             List <ServiceDescription> serviceDescriptions =
                 JsonConvert.DeserializeObject<List<ServiceDescription>>(contents)
                 ?? new List<ServiceDescription>();
-
-            foreach(ServiceDescription serviceDescription in serviceDescriptions)
+            try
             {
-                // Iterate over every variable in ServiceDescription (Name, Description, API_Endpoint, Num_Operands, Operand_type)
-                foreach(PropertyInfo prop in serviceDescription.GetType().GetProperties())
+                foreach (ServiceDescription serviceDescription in serviceDescriptions)
                 {
-                    // Gets the string value of the variable for comparison
-                    string str = prop.GetValue(serviceDescription).ToString();
-                    if(str.Contains(searchTerm))
+                    // Iterate over every variable in ServiceDescription (Name, Description, API_Endpoint, Num_Operands, Operand_type)
+                    foreach (PropertyInfo prop in serviceDescription.GetType().GetProperties())
                     {
-                        // If there is a match, then add this service description to the list
-                        // and break instead of checking the rest of the variables.
-                        outputServiceDescriptions.Add(serviceDescription);
-                        break;
+                        // Gets the string value of the variable for comparison
+                        string str = prop.GetValue(serviceDescription).ToString();
+                        //if (str.Contains(searchTerm))
+                        if(str.Length < searchTerm.Length)
+                        {
+                            if (str.Contains(searchTerm))
+                            {
+                                // If there is a match, then add this service description to the list
+                                // and break instead of checking the rest of the variables.
+                                outputServiceDescriptions.Add(serviceDescription);
+                                break;
+                            }
+                        }
+                        else if(str.Equals(searchTerm))
+                        {
+                            outputServiceDescriptions.Add(serviceDescription);
+                            break;
+                        }
                     }
+
                 }
-
             }
-            var output = JsonConvert.SerializeObject(outputServiceDescriptions);
+            catch(Exception exc)
+            {
+                var message = exc.ToString();
+            }
+            //var output = JsonConvert.SerializeObject(outputServiceDescriptions);
 
-            return Ok(output);
+            return Ok(outputServiceDescriptions);
         }
 
         [Route("AllServices/{token:int}")]
         [HttpGet]
+        [ResponseType(typeof(List<ServiceDescription>))]
         public IHttpActionResult AllServices(int token)
         {
             string fNameFile = folder + "/App_Data/service_description.txt";
@@ -132,9 +148,10 @@ namespace Registry.Controllers
                 JsonConvert.DeserializeObject<List<ServiceDescription>>(contents)
                 ?? new List<ServiceDescription>();
 
-            var output = JsonConvert.SerializeObject(serviceDescriptions);
+            //var output = JsonConvert.SerializeObject(serviceDescriptions);
 
-            return Ok(output);
+            //return Ok(output);
+            return Ok(serviceDescriptions);
         }
 
         [Route("Unpublish/{token:int}/{serviceEndpoint:alpha}")]

@@ -45,6 +45,7 @@ namespace Client
             {
                 // Do the thing with the string output
                ServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content);
+               ServiceListView.ItemsSource = ServiceDescriptions;
             }
             else
             {
@@ -72,7 +73,7 @@ namespace Client
         {
             string searchStr = SearchTextBox.Text;
             RestClient restClient = new RestClient("https://localhost:44329/");
-            RestRequest request = new RestRequest("Search/" + token + "/" + searchStr);
+            RestRequest request = new RestRequest("api/registry/Search/" + token + "/" + searchStr);
             RestResponse restResponse = restClient.ExecutePost(request);
 
             SearchServiceDescriptions = JsonConvert.DeserializeObject<List<ServiceDescription>>(restResponse.Content); 
