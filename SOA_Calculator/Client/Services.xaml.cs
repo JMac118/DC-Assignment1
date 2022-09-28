@@ -123,7 +123,7 @@ namespace Client
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            string reqStr = "api/calculator/" + token + "/" + curServiceDescription.Name + "/";
+            string reqStr = token + "/" + curServiceDescription.Name + "/";
 
             TextBox textbox = null;
             StackPanel parent = null;
