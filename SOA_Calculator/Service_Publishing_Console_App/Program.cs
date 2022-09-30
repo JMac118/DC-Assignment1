@@ -7,10 +7,12 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using Authenticator_DLL;
 using Newtonsoft.Json;
 using Registry_DLL;
 using RestSharp;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Service_Publishing_Console_App
 {
@@ -258,8 +260,11 @@ namespace Service_Publishing_Console_App
             }
 
             RestClient restClient = new RestClient(registryApi);
-            RestRequest request = new RestRequest("api/registry/Unpublish/" + token + "/" + endpoint);
-
+            RestRequest request = new RestRequest("api/registry/Unpublish/" + token);
+            String body = JsonConvert.SerializeObject(endpoint);
+            //request.AddStringBody(endpoint, "text/plain");
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+            //RestResponse restResponse = restClient.ExecutePost(request);
             RestResponse restResponse = restClient.ExecutePost(request);
             if (restResponse.IsSuccessStatusCode)
             {
